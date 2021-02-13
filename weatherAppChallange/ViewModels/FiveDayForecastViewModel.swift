@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Charts
 class FiveDayForecastViewModel {
     
     var list: [dayTempInfo]?
@@ -50,6 +50,18 @@ class FiveDayForecastViewModel {
             }
         }
         print("init is Over")
+    }
+    func generateDataForChart() -> LineChartData{
+        var entries = [ChartDataEntry]()
+        
+        for item in list![0].horaTemp!{
+            entries.append(ChartDataEntry(x: Double(item.hour!)!, y: Double(item.temperature!)!))
+        }
+        
+        let set = LineChartDataSet(entries: entries)
+        set.colors = ChartColorTemplates.material()
+        let data = LineChartData(dataSet: set)
+        return data
     }
     
     struct dayTempInfo {

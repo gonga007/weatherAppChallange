@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		D7310BC925D7122A0057AAF0 /* openWeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7310BC825D7122A0057AAF0 /* openWeatherDataModel.swift */; };
 		D7310BD125D715310057AAF0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7310BD025D715310057AAF0 /* Utils.swift */; };
 		D7310BF125D7EF170057AAF0 /* FiveDayForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7310BF025D7EF170057AAF0 /* FiveDayForecastViewModel.swift */; };
+		D7310BFB25D87D700057AAF0 /* DailyForecast.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7310BFA25D87D700057AAF0 /* DailyForecast.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D7310BC825D7122A0057AAF0 /* openWeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openWeatherDataModel.swift; sourceTree = "<group>"; };
 		D7310BD025D715310057AAF0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D7310BF025D7EF170057AAF0 /* FiveDayForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForecastViewModel.swift; sourceTree = "<group>"; };
+		D7310BFA25D87D700057AAF0 /* DailyForecast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyForecast.xib; sourceTree = "<group>"; };
 		F6E598B8D4CE690626BEFDCC /* Pods-weatherAppChallange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherAppChallange.release.xcconfig"; path = "Target Support Files/Pods-weatherAppChallange/Pods-weatherAppChallange.release.xcconfig"; sourceTree = "<group>"; };
 		F98E01CF1639ED1C3B3FE2C5 /* Pods_weatherAppChallange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatherAppChallange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -54,7 +56,6 @@
 				C3FAE921DC2F50EC8803F7CF /* Pods-weatherAppChallange.debug.xcconfig */,
 				F6E598B8D4CE690626BEFDCC /* Pods-weatherAppChallange.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -113,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				D7310BAB25D70C670057AAF0 /* Main.storyboard */,
+				D7310BFA25D87D700057AAF0 /* DailyForecast.xib */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7310BFB25D87D700057AAF0 /* DailyForecast.xib in Resources */,
 				D7310BB225D70C690057AAF0 /* LaunchScreen.storyboard in Resources */,
 				D7310BAF25D70C690057AAF0 /* Assets.xcassets in Resources */,
 				D7310BAD25D70C670057AAF0 /* Main.storyboard in Resources */,

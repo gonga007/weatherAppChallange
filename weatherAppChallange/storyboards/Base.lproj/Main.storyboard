@@ -15,13 +15,66 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5i-OZ-isj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rq-My-G1v">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNx-ZT-wAG">
+                                                <rect key="frame" x="16" y="16" width="382" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF1-4o-GDY" customClass="LineChartView" customModule="Charts">
+                                                <rect key="frame" x="16" y="69" width="382" height="250"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="mQA-QV-sOH"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="eNx-ZT-wAG" firstAttribute="leading" secondItem="4rq-My-G1v" secondAttribute="leading" constant="16" id="FCD-aw-orx"/>
+                                            <constraint firstItem="eNx-ZT-wAG" firstAttribute="top" secondItem="4rq-My-G1v" secondAttribute="top" constant="16" id="PIt-4U-jFr"/>
+                                            <constraint firstItem="PF1-4o-GDY" firstAttribute="leading" secondItem="4rq-My-G1v" secondAttribute="leading" constant="16" id="hao-jW-NVO"/>
+                                            <constraint firstItem="PF1-4o-GDY" firstAttribute="top" secondItem="eNx-ZT-wAG" secondAttribute="bottom" constant="32" id="iHb-Ik-xfs"/>
+                                            <constraint firstAttribute="trailing" secondItem="PF1-4o-GDY" secondAttribute="trailing" constant="16" id="kUa-wG-KCV"/>
+                                            <constraint firstAttribute="trailing" secondItem="eNx-ZT-wAG" secondAttribute="trailing" constant="16" id="tE3-SE-PzW"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4rq-My-G1v" firstAttribute="width" secondItem="n5i-OZ-isj" secondAttribute="width" id="AK4-p8-fzS"/>
+                                    <constraint firstAttribute="trailing" secondItem="4rq-My-G1v" secondAttribute="trailing" id="E3h-hB-2n4"/>
+                                    <constraint firstItem="4rq-My-G1v" firstAttribute="leading" secondItem="n5i-OZ-isj" secondAttribute="leading" id="LkB-oW-IOl"/>
+                                    <constraint firstItem="4rq-My-G1v" firstAttribute="height" secondItem="n5i-OZ-isj" secondAttribute="height" priority="250" id="V4R-U1-7xN"/>
+                                    <constraint firstAttribute="bottom" secondItem="4rq-My-G1v" secondAttribute="bottom" id="c1e-ck-yIi"/>
+                                    <constraint firstItem="4rq-My-G1v" firstAttribute="top" secondItem="n5i-OZ-isj" secondAttribute="top" id="gGq-52-vod"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="n5i-OZ-isj" secondAttribute="bottom" id="Bh2-ki-7rr"/>
+                            <constraint firstItem="n5i-OZ-isj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DAa-g3-WNc"/>
+                            <constraint firstItem="n5i-OZ-isj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="L0t-3n-koF"/>
+                            <constraint firstItem="n5i-OZ-isj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mka-6N-Ztj"/>
+                            <constraint firstItem="n5i-OZ-isj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sFh-wn-Cpw"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentWeatherLabel" destination="eNx-ZT-wAG" id="hur-6D-YSl"/>
+                        <outlet property="lineChart" destination="PF1-4o-GDY" id="Jab-dl-FSL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-206" y="117"/>
+            <point key="canvasLocation" x="-207.24637681159422" y="116.51785714285714"/>
         </scene>
     </scenes>
     <resources>
