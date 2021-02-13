@@ -10,6 +10,11 @@ import Charts
 
 class ViewController: UIViewController, ChartViewDelegate {
     
+    @IBOutlet weak var dailyForecastView1: DailyForecast!
+    @IBOutlet weak var dailyForecastView2: DailyForecast!
+    @IBOutlet weak var dailyForecastView3: DailyForecast!
+    @IBOutlet weak var dailyForecastView4: DailyForecast!
+    @IBOutlet weak var dailyForecastView5: DailyForecast!
     @IBOutlet weak var lineChart: LineChartView!
     @IBOutlet weak var currentWeatherLabel: UILabel!
     
@@ -28,8 +33,13 @@ class ViewController: UIViewController, ChartViewDelegate {
         o.fetch5dayWeatherForecast(completionHandler: { [self] in
             var fiveDayForecastViewModel = FiveDayForecastViewModel(dataModel: o.fiveDayfor!)
             currentWeatherLabel.text = "It is now " + fiveDayForecastViewModel.list![0].horaTemp![0].temperature! + "ºC"
-//            lineChart.data = fiveDayForecastViewModel.generateDataForChart()
             generateDataForChart(ViewModel: fiveDayForecastViewModel)
+            dailyForecastView1.populateLabels(dayInfo: fiveDayForecastViewModel.list![0])
+            dailyForecastView2.populateLabels(dayInfo: fiveDayForecastViewModel.list![1])
+            dailyForecastView3.populateLabels(dayInfo: fiveDayForecastViewModel.list![2])
+            dailyForecastView4.populateLabels(dayInfo: fiveDayForecastViewModel.list![3])
+            dailyForecastView5.populateLabels(dayInfo: fiveDayForecastViewModel.list![4])
+            
         })
     }
     override func viewDidLayoutSubviews() {

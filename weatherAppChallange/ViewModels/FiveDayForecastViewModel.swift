@@ -63,15 +63,13 @@ class FiveDayForecastViewModel {
         let data = LineChartData(dataSet: set)
         return data
     }
-    
-    struct dayTempInfo {
-        var horaTemp: [horaTemp]?
-        var dia: String?
-        var mes: String?
-    }
-    struct horaTemp {
-        var hour: String?
-        var temperature: String?
-    }
-    
+}
+struct dayTempInfo {
+    var horaTemp: [horaTemp]?
+    var dia: String?
+    var mes: String?
+}
+struct horaTemp {
+    var hour: String?
+    var temperature: String?
 }

@@ -8,7 +8,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DailyForecast" customModule="weatherAppChallange" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="1Rf-eu-huD"/>
+                <outlet property="dayLabel" destination="mdv-UX-CGQ" id="jVY-iR-wUl"/>
+                <outlet property="hourLabel1" destination="bKA-BT-SU8" id="Wj6-7a-Cmz"/>
+                <outlet property="hourLabel2" destination="2QC-Lt-bG4" id="xcq-nA-VcJ"/>
+                <outlet property="hourLabel3" destination="hYN-j7-7AT" id="GJD-VV-iae"/>
+                <outlet property="hourLabel4" destination="vct-TB-tqu" id="JgI-zC-Emv"/>
+                <outlet property="hourLabel5" destination="W2J-Ob-c9Y" id="9i1-b4-WUh"/>
+                <outlet property="hourLabel6" destination="iVZ-aL-jPI" id="IwR-sA-CFg"/>
+                <outlet property="hourLabel7" destination="mY9-Ni-5yu" id="USj-vg-Gir"/>
+                <outlet property="hourLabel8" destination="H9G-wa-n8V" id="yP2-S7-JsZ"/>
+                <outlet property="temperature1" destination="4do-b8-537" id="3Y8-3s-8EM"/>
+                <outlet property="temperature2" destination="dfj-yR-4Uz" id="fi2-oB-uyG"/>
+                <outlet property="temperature3" destination="sp6-Mm-ni7" id="AWu-y2-MKH"/>
+                <outlet property="temperature4" destination="Hqt-ZM-659" id="jea-zm-ZKD"/>
+                <outlet property="temperature5" destination="763-Sc-rxb" id="7jq-FS-Hsx"/>
+                <outlet property="temperature6" destination="ac4-zD-odr" id="35I-qj-BLQ"/>
+                <outlet property="temperature7" destination="xkk-pv-NJv" id="7Eg-mF-zl2"/>
+                <outlet property="temperature8" destination="Mgy-V5-CPz" id="uOa-MC-pcV"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
@@ -18,10 +39,16 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="206"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lag-bY-UXx">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FXM-VV-BQo">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdv-UX-CGQ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FXM-VV-BQo">
+                                    <rect key="frame" x="0.0" y="35.5" width="414" height="20.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKA-BT-SU8">
                                             <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
@@ -74,7 +101,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bn1-XL-rm7">
-                                    <rect key="frame" x="0.0" y="35.5" width="414" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="71" width="414" height="20.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4do-b8-537">
                                             <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
