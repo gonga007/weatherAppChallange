@@ -112,142 +112,104 @@ class Utils{
         let timeInterval = Double(nanoTime) / 1_000_000_000
         print("Time: \(timeInterval) seconds")
     }
-    func getDateFromString(timeStamp:String, language:String)->String?{
-         let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-         let date = dateFormatter.date(from: timeStamp)
-         let calendar = Calendar.current
-         let components = calendar.dateComponents([Calendar.Component.day,Calendar.Component.month,Calendar.Component.year,Calendar.Component.weekday], from: date!)
-         
-         var diaDaSemana:String=""
-         var mes:String=""
-         if(language == "PT"){
-            
-             if(components.month==1){
-                 mes="JANEIRO"
-             }
-             else if(components.month==2){
-                 mes="FEVEREIRO"
-             }
-             else if(components.month==3){
-                 mes="MARÇO"
-             }
-             else if(components.month==4){
-                 mes="ABRIL"
-             }
-             else if(components.month==5){
-                 mes="MAIO"
-             }
-             else if(components.month==6){
-                 mes="JUNHO"
-             }
-             else if(components.month==7){
-                 mes="JULHO"
-             }
-             else if(components.month==8){
-                 mes="AGOSTO"
-             }
-             else if(components.month==9){
-                 mes="SETEMBRO"
-             }
-             else if(components.month==10){
-                 mes="OUTUBRO"
-             }
-             else if(components.month==11){
-                 mes="NOVEMBRO"
-             }
-             else if(components.month==12){
-                 mes="DEZEMBRO"
-             }
-             let aux1_1:Int = components.day ?? 0
-             let aux1 = String(aux1_1)
-             let aux2_2:Int = components.year ?? 0
-             let aux2 = String(aux2_2)
-            
-             return aux1+" DE "+mes + " "+aux2
-         }
-         else if(language=="EN"){
-             
-             let date = Date()
-             let dateFormatter = DateFormatter()
-             dateFormatter.dateStyle = .full
-             dateFormatter.timeStyle = .full
-             dateFormatter.dateFormat = "MMMM d, yyyy"
-             let dateString = dateFormatter.string(from: date)
-             let dateStringInUpperCase = dateString.uppercased()
-             return dateStringInUpperCase
-         }
-        return nil
+    func getDateElementFromString(dateString: String, element : String) ->String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        guard let date = formatter.date(from: dateString) else {
+            return "Error"
+        }
+        formatter.dateFormat = "yyyy"
+        let year = formatter.string(from: date)
+        formatter.dateFormat = "MM"
+        let month = formatter.string(from: date)
+        formatter.dateFormat = "dd"
+        let day = formatter.string(from: date)
+        formatter.dateFormat = "HH"
+        let hour = formatter.string(from: date)
+        
+        if(element == "dia"){
+            return day
+        }
+        else if(element == "mes"){
+            return month
+        }
+        else if(element == "ano"){
+            return year
+        }
+        else if(element == "hour"){
+            return hour
+        }
+        return "Error"
+        
     }
-}
 
-//GET STATUS
-   func getStatus(){
-       let defaults = UserDefaults.standard
-       var stringpost = ""
-       if(defaults.string(forKey: "id") != nil){
-           stringpost += "id="+defaults.string(forKey: "id")!
-       }
-       stringpost += "&device="+GlobalClass.returnDeviceString()
-       if(defaults.string(forKey: "lang") != nil){
-           stringpost += "&lang="+defaults.string(forKey: "lang")!
-       }
-       
-       self.webCall(url: Constants.server+Constants.webservices+"check_status.php", stringpost: stringpost,
-                    callbackerror: {print("error status")}, callbackok: checkStatus)
-   }
-   func checkStatus(json: String){
-       
-       if let data = json.data(using: String.Encoding.utf8) {
-           
-           do{
-               let parseJSON = try JSON(data: data)
-               let response_server = parseJSON["response"].string!
-               
-               if(response_server == "noapp"){
-                   let defaults = UserDefaults.standard
-                   defaults.removeObject(forKey: "email")
-                   defaults.removeObject(forKey: "id")
-                   defaults.removeObject(forKey: "nome")
-                   defaults.removeObject(forKey: "flag_registo")
-                   defaults.removeObject(forKey: "flag_end")
-                   defaults.removeObject(forKey: "beacon")
-                   defaults.removeObject(forKey: "checkin")
-                   variaveis_control.area = ""
-                   let defaultCenter = NotificationCenter.default
-                   defaultCenter.post(name: NSNotification.Name(rawValue: "reset"),
-                                      object: nil)
-                   
-               }
-               else if(response_server == "ok"){
-                   let defaults = UserDefaults.standard
-                   let status = parseJSON["status"]
-                   defaults.setValue(status["email"].string, forKey:"email")
-                   defaults.setValue(status["nome"].string, forKey:"nome")
-                   
-                   if(status["flag_checkin"].int == 1){
-                       defaults.setValue(true, forKey: "beacon")
-                       defaults.setValue(true, forKey:"checkin")
-                   }
-                   else{
-                       defaults.setValue(false, forKey: "beacon")
-                       defaults.setValue(false, forKey:"checkin")
-                   }
-                   defaults.synchronize()
-                   let defaultCenter = NotificationCenter.default
-                   defaultCenter.post(name: NSNotification.Name(rawValue: "CompleteDownloadNotification"),
-                                      object: nil)
-                   defaultCenter.post(name: NSNotification.Name(rawValue: "chengeMenu"),
-                                      object: nil)
-                   
-               }
-           }
-           catch {
-               print("Something went wrong with get status")
-               print(error)
-           }
-           
-       }
+////GET STATUS
+//   func getStatus(){
+//       let defaults = UserDefaults.standard
+//       var stringpost = ""
+//       if(defaults.string(forKey: "id") != nil){
+//           stringpost += "id="+defaults.string(forKey: "id")!
+//       }
+//       stringpost += "&device="+UtilsClass.returnDeviceString()
+//       if(defaults.string(forKey: "lang") != nil){
+//           stringpost += "&lang="+defaults.string(forKey: "lang")!
+//       }
+//
+//       self.webCall(url: Constants.server+Constants.webservices+"check_status.php", stringpost: stringpost,
+//                    callbackerror: {print("error status")}, callbackok: checkStatus)
+//   }
+//   func checkStatus(json: String){
+//
+//       if let data = json.data(using: String.Encoding.utf8) {
+//
+//           do{
+//               let parseJSON = try JSON(data: data)
+//               let response_server = parseJSON["response"].string!
+//
+//               if(response_server == "noapp"){
+//                   let defaults = UserDefaults.standard
+//                   defaults.removeObject(forKey: "email")
+//                   defaults.removeObject(forKey: "id")
+//                   defaults.removeObject(forKey: "nome")
+//                   defaults.removeObject(forKey: "flag_registo")
+//                   defaults.removeObject(forKey: "flag_end")
+//                   defaults.removeObject(forKey: "beacon")
+//                   defaults.removeObject(forKey: "checkin")
+//                   variaveis_control.area = ""
+//                   let defaultCenter = NotificationCenter.default
+//                   defaultCenter.post(name: NSNotification.Name(rawValue: "reset"),
+//                                      object: nil)
+//
+//               }
+//               else if(response_server == "ok"){
+//                   let defaults = UserDefaults.standard
+//                   let status = parseJSON["status"]
+//                   defaults.setValue(status["email"].string, forKey:"email")
+//                   defaults.setValue(status["nome"].string, forKey:"nome")
+//
+//                   if(status["flag_checkin"].int == 1){
+//                       defaults.setValue(true, forKey: "beacon")
+//                       defaults.setValue(true, forKey:"checkin")
+//                   }
+//                   else{
+//                       defaults.setValue(false, forKey: "beacon")
+//                       defaults.setValue(false, forKey:"checkin")
+//                   }
+//                   defaults.synchronize()
+//                   let defaultCenter = NotificationCenter.default
+//                   defaultCenter.post(name: NSNotification.Name(rawValue: "CompleteDownloadNotification"),
+//                                      object: nil)
+//                   defaultCenter.post(name: NSNotification.Name(rawValue: "chengeMenu"),
+//                                      object: nil)
+//
+//               }
+//           }
+//           catch {
+//               print("Something went wrong with get status")
+//               print(error)
+//           }
+//
+//       }
    }
 
 
