@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "74CD6DF2-BFA4-49F9-835B-E25584D0640B"
+            uuid = "313D85A6-11ED-4D8B-BBC4-34DB8B2B3EB5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "weatherAppChallange/ViewModels/FiveDayForecastViewModel.swift"
+            filePath = "weatherAppChallange/ViewControllers/DailyForecast.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "init(dataModel:)"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "populateLabels(dayInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

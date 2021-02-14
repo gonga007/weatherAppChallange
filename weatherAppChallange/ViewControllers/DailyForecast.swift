@@ -49,7 +49,7 @@ class DailyForecast: UIView {
     }
     func populateLabels(dayInfo:dayTempInfo){
         
-        dayLabel.text = dayInfo.dia! + "/" + dayInfo.mes!
+        dayLabel.text = "Forecast For: " + dayInfo.dia! + "/" + dayInfo.mes!
         hourLabel1.text = "00:00"
         hourLabel2.text = "03:00"
         hourLabel3.text = "06:00"

@@ -26,7 +26,8 @@ class FiveDayForecastViewModel {
                 var ht = horaTemp()
                 let temperature = day.main?.temp
                 ht.hour = UtilsClass.getDateElementFromString(dateString: day.dt_txt ?? "", element: "hour")
-                ht.temperature = String(temperature ?? 0)
+                let temperatureRounded = Double(round(10*temperature! ?? 0)/10)
+                ht.temperature = String(temperatureRounded)
                 list?[listIndex].horaTemp?.append(ht)
                 count += 1
             }
@@ -35,7 +36,8 @@ class FiveDayForecastViewModel {
                 var ht = horaTemp()
                 let temperature = day.main?.temp
                 ht.hour = UtilsClass.getDateElementFromString(dateString: day.dt_txt ?? "", element: "hour")
-                ht.temperature = String(temperature ?? 0)
+                let temperatureRounded = Double(round(10*temperature! ?? 0)/10)
+                ht.temperature = String(temperatureRounded)
                 if(previousDay != UtilsClass.getDateElementFromString(dateString: day.dt_txt ?? "", element: "dia")){
                     listIndex += 1
                     var dayTI = dayTempInfo()
