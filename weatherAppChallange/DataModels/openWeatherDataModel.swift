@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Charts
 
 class openWeatherDataModel{
     
@@ -47,6 +48,7 @@ class openWeatherDataModel{
         print(response)
         self.fiveDayfor = json
     }
+
 }
 
 

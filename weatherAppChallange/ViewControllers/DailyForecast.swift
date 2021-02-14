@@ -41,11 +41,6 @@ class DailyForecast: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        setUp()
-    }
-    func setUp(){
-        
     }
     func populateLabels(dayInfo:dayTempInfo){
         
@@ -69,37 +64,36 @@ class DailyForecast: UIView {
         temperature8.text = "-"
         
         for item in dayInfo.horaTemp! {
+            let textForLabel = item.temperature! + "ºC"
             if(item.hour == "00"){
-                temperature1.text = item.temperature! + "ºC"
+                temperature1.text = textForLabel
             }
             else if(item.hour == "03"){
-                temperature2.text = item.temperature! + "ºC"
+                temperature2.text = textForLabel
+            }
+            else if(item.hour == "06"){
+                temperature3.text = textForLabel
             }
             else if(item.hour == "09"){
-                temperature3.text = item.temperature! + "ºC"
+                temperature4.text = textForLabel
             }
+            
             else if(item.hour == "12"){
-                temperature4.text = item.temperature! + "ºC"
+                temperature5.text = textForLabel
             }
             
             else if(item.hour == "15"){
-                temperature5.text = item.temperature! + "ºC"
+                temperature6.text = textForLabel
             }
             
             else if(item.hour == "18"){
-                temperature6.text = item.temperature! + "ºC"
+                temperature7.text = textForLabel
             }
             
             else if(item.hour == "21"){
-                temperature7.text = item.temperature! + "ºC"
-            }
-            
-            else if(item.hour == ""){
-                temperature8.text = item.temperature! + "ºC"
+                temperature8.text = textForLabel
             }
         }
-        
-   
     }
 
 }

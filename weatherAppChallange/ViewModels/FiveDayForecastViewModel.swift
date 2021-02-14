@@ -16,52 +16,40 @@ class FiveDayForecastViewModel {
         var listIndex = 0
         for day in dataModel.list! {
             let dateText = day.dt_txt
+            let temperature = day.main?.temp
+            let temperatureRounded = Double(round(10*temperature! )/10)
+            var ht = horaTemp()
+            ht.hour = UtilsClass.getDateElementFromString(dateString: day.dt_txt ?? "", element: "hour")
+            ht.temperature = String(temperatureRounded)
+            var dayTI = dayTempInfo()
+            dayTI.dia = UtilsClass.getDateElementFromString(dateString: dateText ?? "", element: "dia")
+            dayTI.mes = UtilsClass.getDateElementFromString(dateString: dateText ?? "", element: "mes")
             if(count == 0){
-                var dayTI = dayTempInfo()
-                dayTI.dia = UtilsClass.getDateElementFromString(dateString: dateText ?? "", element: "dia")
-                dayTI.mes = UtilsClass.getDateElementFromString(dateString: dateText ?? "", element: "mes")
                 list?.append(dayTI)
                 list?[listIndex].horaTemp = []
-
-                var ht = horaTemp()
-                let temperature = day.main?.temp
-                ht.hour = UtilsClass.getDateElementFromString(dateString: day.dt_txt ?? "", element: "hour")
-                let temperatureRounded = Double(round(10*temperature! ?? 0)/10)
-                ht.temperature = String(temperatureRounded)
                 list?[listIndex].horaTemp?.append(ht)
-                count += 1
             }
             else if(count != 0){
                 let previousDay = UtilsClass.getDateElementFromString(dateString: dataModel.list![count - 1].dt_txt ?? "", element: "dia")
-                var ht = horaTemp()
-                let temperature = day.main?.temp
-                ht.hour = UtilsClass.getDateElementFromString(dateString: day.dt_txt ?? "", element: "hour")
-                let temperatureRounded = Double(round(10*temperature! ?? 0)/10)
-                ht.temperature = String(temperatureRounded)
                 if(previousDay != UtilsClass.getDateElementFromString(dateString: day.dt_txt ?? "", element: "dia")){
                     listIndex += 1
-                    var dayTI = dayTempInfo()
-                    dayTI.dia = UtilsClass.getDateElementFromString(dateString: dateText ?? "", element: "dia")
-                    dayTI.mes = UtilsClass.getDateElementFromString(dateString: dateText ?? "", element: "mes")
                     list?.append(dayTI)
                     list?[listIndex].horaTemp = []
-                
                 }
                 list?[listIndex].horaTemp!.append(ht)
-                count += 1
             }
+            count += 1
         }
-        print("init is Over")
     }
     func generateDataForChart() -> LineChartData{
         var entries = [ChartDataEntry]()
-        
         for item in list![0].horaTemp!{
             entries.append(ChartDataEntry(x: Double(item.hour!)!, y: Double(item.temperature!)!))
         }
         
-        let set = LineChartDataSet(entries: entries)
-        set.colors = ChartColorTemplates.material()
+        let set = LineChartDataSet(entries: entries, label: "Hours / Temprature ºC")
+        set.drawCirclesEnabled = false
+        set.mode = .cubicBezier
         let data = LineChartData(dataSet: set)
         return data
     }
